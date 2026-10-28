@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Método DS | Grupo VIP Gratuito</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-black: #0b0b0b;
+            --card-black: #141414;
+            --pink-vibrant: #ff1493;
+            --pink-hover: #ff69b4;
+            --gold: #d4af37;
+            --white: #ffffff;
+            --beige: #f5f0eb;
+            --gray-text: #b0b0b0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-black);
+            color: var(--white);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 480px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px 0 10px 0;
+        }
+
+        .badge-vip {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--gold), #f3e5ab);
+            color: #000;
+            font-weight: 800;
+            font-size: 0.85rem;
+            padding: 6px 16px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .hero-img-container {
+            position: relative;
+            width: 100%;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 2px solid var(--gold);
+            box-shadow: 0 10px 30px rgba(255, 20, 147, 0.2);
+            margin-bottom: 25px;
+        }
+
+        .hero-img-container img {
+            width: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+        .card-form {
+            background-color: var(--card-black);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 20px;
+            padding: 25px 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.8);
+            margin-bottom: 35px;
+        }
+
+        .card-form h2 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            color: var(--white);
+            letter-spacing: 0.5px;
+        }
+
+        .card-form h2 span {
+            color: var(--pink-vibrant);
+        }
+
+        .card-form p {
+            color: var(--beige);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 16px;
+            background-color: #1f1f1f;
+            border: 1px solid #333;
+            border-radius: 10px;
+            color: var(--white);
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus {
+            border-color: var(--pink-vibrant);
+            box-shadow: 0 0 10px rgba(255, 20, 147, 0.3);
+        }
+
+        .form-group input::placeholder {
+            color: #777;
+        }
+
+        .btn-submit {
+            display: block;
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, var(--pink-vibrant), #ff47aa);
+            color: var(--white);
+            border: none;
+            border-radius: 10px;
+            font-size: 1.05rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(255, 20, 147, 0.4);
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 20, 147, 0.6);
+            background: linear-gradient(135deg, var(--pink-hover), var(--pink-vibrant));
+        }
+
+        .privacy-text {
+            font-size: 0.75rem;
+            color: var(--gray-text);
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin: 40px 0 20px 0;
+            color: var(--gold);
+            letter-spacing: 1px;
+        }
+
+        .benefits-list {
+            background-color: var(--card-black);
+            border-radius: 15px;
+            padding: 20px;
+            border: 1px solid rgba(255, 20, 147, 0.2);
+            margin-bottom: 30px;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .benefit-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .benefit-item span {
+            color: var(--pink-vibrant);
+            font-size: 1.2rem;
+            margin-right: 12px;
+            font-weight: bold;
+        }
+
+        .benefit-item p {
+            color: var(--beige);
+            font-size: 0.95rem;
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 30px;
+        }
+
+        .result-card {
+            background-color: var(--card-black);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #333;
+        }
+
+        .result-card img {
+            width: 100%;
+            display: block;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, #181818, var(--card-black));
+            border-left: 4px solid var(--gold);
+            padding: 20px;
+            border-radius: 0 15px 15px 0;
+            margin-bottom: 25px;
+            font-style: italic;
+            color: var(--beige);
+            font-size: 0.95rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            font-size: 0.8rem;
+            color: var(--gray-text);
+            border-top: 1px solid #222;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- CABEÇALHO / FOTO PRINCIPAL -->
+        <header>
+            <div class="badge-vip">🔥 GRUPO VIP GRATUITO</div>
+        </header>
+
+        <div class="hero-img-container">
+            <!-- Substitua o link abaixo pela URL direta da sua foto de topo se preferir -->
+            <img src="https://images.unsplash.com/photo-1574680096145-d05b474e2155?auto=format&fit=crop&w=800&q=80" alt="Dayana Spagnollo - Método DS">
+        </div>
+
+        <!-- FORMULÁRIO -->
+        <div class="card-form" id="cadastro">
+            <h2>VOCÊ ESTÁ A <span>1 PASSO</span></h2>
+            <p>Preencha seus dados abaixo e entre agora no Grupo VIP Gratuito do Método DS.</p>
+            
+            <form action="#" method="POST" onsubmit="event.preventDefault(); alert('Inscrição realizada com sucesso! Redirecionando...');">
+                <div class="form-group">
+                    <input type="text" placeholder="Nome completo" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" placeholder="Seu melhor e-mail" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" placeholder="WhatsApp (DDD + número)" required>
+                </div>
+                <button type="submit" class="btn-submit">QUERO ENTRAR NO GRUPO VIP</button>
+            </form>
+            <div class="privacy-text">
+                Ao enviar, você concorda em receber comunicações e com a política de privacidade. Seus dados estão seguros.
+            </div>
+        </div>
+
+        <!-- O QUE VOCÊ VAI ENCONTRAR -->
+        <div class="section-title">O MÉTODO DS</div>
+        <div class="benefits-list">
+            <div class="benefit-item">
+                <span>✓</span>
+                <p>Treino personalizado para a sua fase e na sua rotina, seja em casa ou na academia.</p>
+            </div>
+            <div class="benefit-item">
+                <span>✓</span>
+                <p>Estratégias inteligentes de emagrecimento e ganho de massa com acompanhamento real.</p>
+            </div>
+            <div class="benefit-item">
+                <span>✓</span>
+                <p>Direcionamento especializado para mulheres que querem voltar a cuidar de si mesmas.</p>
+            </div>
+        </div>
+
+        <!-- RESULTADOS REAIS / TRANSFORMAÇÕES -->
+        <div class="section-title">RESULTADOS REAIS</div>
+        <div class="quote-box">
+            "Eu sei que começar nem sempre é fácil. Mas você não precisa esperar o momento perfeito para dar o primeiro passo."
+        </div>
+
+        <div class="results-grid">
+            <div class="result-card">
+                <img src="https://images.unsplash.com/photo-1518310383802-640c2de311b2?auto=format&fit=crop&w=400&q=80" alt="Transformação 1">
+            </div>
+            <div class="result-card">
+                <img src="https://images.unsplash.com/photo-1549060279-7e168fcee0c2?auto=format&fit=crop&w=400&q=80" alt="Transformação 2">
+            </div>
+            <div class="result-card">
+                <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=400&q=80" alt="Transformação 3">
+            </div>
+            <div class="result-card">
+                <img src="https://images.unsplash.com/photo-1583863788434-e58a36330cf0?auto=format&fit=crop&w=400&q=80" alt="Transformação 4">
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; 2026 Dayana Spagnollo • Método DS. Todos os direitos reservados.</p>
+        </footer>
+    </div>
+
+</body>
+</html>
